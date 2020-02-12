@@ -1,7 +1,7 @@
 const { API_TOKEN } = require('./config')
 const logger = require('./logger')
 
-function validateToken(req, res, next) {
+async function validateToken(req, res, next) {
   const authToken = req.get('Authorization')
   logger.error(`Unauthorized request to path: ${req.path}`)
 
