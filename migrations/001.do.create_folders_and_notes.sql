@@ -1,0 +1,19 @@
+ALTER TABLE IF EXISTS notes
+    DROP COLUMN folder_id;
+
+DROP TABLE IF EXISTS notes;
+DROP TABLE IF EXISTS folders;
+
+CREATE TABLE folders (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+
+CREATE TABLE notes (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    modified TEXT NOT NULL,
+    folder_id INTEGER REFERENCES folders(id) ON DELETE CASCADE NOT NULL,
+    content TEXT NOT NULL
+);  
